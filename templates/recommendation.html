@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Movie Recommendations</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f4f4f4;
+		}
+		h1 {
+			text-align: center;
+			margin-top: 50px;
+		}
+		h2 {
+			margin-top: 30px;
+		}
+		.container {
+			margin: 0 auto;
+			width: 70%;
+			background-color: #fff;
+			padding: 30px;
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+			border-radius: 10px;
+		}
+		.movie-info {
+			display: flex;
+			align-items: center;
+		}
+		.movie-info img {
+			margin-right: 20px;
+			border-radius: 5px;
+			box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+		}
+		.recommended-movies {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			grid-gap: 30px;
+			margin-top: 50px;
+		}
+		.recommended-movies img {
+			border-radius: 5px;
+			box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+		}
+	</style>
+</head>
+<body>
+	<h1>Movie Recommendations</h1>
+	<div class="container">
+		<div class="movie-info">
+			<img src="{{movie_info['poster']}}" alt="{{movie_info['title']}} poster" height="300">
+			<div>
+				<h2>{{movie_info['title']}}</h2>
+				<p><b>Director:</b> {{movie_info['director']}}</p>
+				<p><b>Genre:</b> {{movie_info['genres']}}</p>
+				<p><b>Year:</b> {{movie_info['year']}}</p>
+				<p><b>IMDb Rating:</b> {{movie_info['imdb_rating']}}</p>
+			</div>
+		</div>
+		<div class="recommended-movies">
+			{% for movie in recommended_movies.iterrows() %}
+				<div>
+					<img src="{{movie[1]['poster']}}" alt="{{movie[1]['title']}} poster" height="300">
+					<h3>{{movie[1]['title']}}</h3>
+					<p><b>Director:</b> {{movie[1]['director']}}</p>
+					<p><b>Genre:</b> {{movie[1]['genres']}}</p>
+					<p><b>Year:</b> {{movie[1]['year']}}</p>
+					<p><b>IMDb Rating:</b> {{movie[1]['imdb_rating']}}</p>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</body>
+</html>
